@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<div class="mx-auto" style="width: 500px;">
+<h1>Liste des utilisateurs</h1><br/><br/><br/><br/>
+{% for utilisateur in utilisateur %}
+        <h2 class="font-weight-bold">{{ utilisateur.nom }}</h2>
+        <div class="font-weight-lighter">{{ utilisateur.prenom }}</div>
+        <div class="font-weight-lighter">{{ utilisateur.email}}</div><br/><br/>
+        <br/><br/>
+        
+ {% else %}
+        <br/><br/><li><em>Il n'y a aucun utilisateur</em></li> <br/><br/>
+        
+{% endfor %}
+
+<div class="form-group">
+     {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <label>{{ form_row(form.nom) }}</label>
+     <label>{{ form_row(form.prenom) }}</label>
+     <label>{{ form_row(form.email) }}</label>
+{{ form_row(form.date_inscription) }}
+
+    {{ form_row(form.submit, { 'label': 'Submit me' }) }}
+{{ form_end(form) }}
+</div>
+{% endblock %}
